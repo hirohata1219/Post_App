@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "/up", to: proc { [200, {}, ["OK"]] }
+
   root "posts#index"
 
   resources :users, only: %i[new create show]
