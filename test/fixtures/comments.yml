@@ -2,10 +2,10 @@
 
 one:
   body: MyText
-  user: one
+  user: taro
   post: one
 
 two:
   body: MyText
-  user: two
+  user: jiro
   post: two
