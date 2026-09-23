@@ -1,13 +1,13 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: postgres
-  password: password
+  username: <%= ENV.fetch("DATABASE_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "password") %>
 
 development:
   primary: &primary_development
     <<: *default
+    host: <%= ENV.fetch("DATABASE_HOST", "db") %>
     database: a_development
 
   cache:
@@ -23,4 +23,27 @@ development:
   cable:
     <<: *primary_development
     database: a_development_cable
+    migrations_paths: db/cable_migrate
+
+production:
+  primary: &primary_production
+    <<: *default
+    url: <%= ENV["DATABASE_URL"] %>
+
+  cache:
+    <<: *primary_production
+    url: <%= ENV["DATABASE_URL"] %>
+    database: a_production_cache
+    migrations_paths: db/cache_migrate
+
+  queue:
+    <<: *primary_production
+    url: <%= ENV["DATABASE_URL"] %>
+    database: a_production_queue
+    migrations_paths: db/queue_migrate
+
+  cable:
+    <<: *primary_production
+    url: <%= ENV["DATABASE_URL"] %>
+    database: a_production_cable
     migrations_paths: db/cable_migrate
