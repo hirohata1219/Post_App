@@ -1,0 +1,41 @@
+<div data-controller="ai-post" class="container py-5 d-flex flex-column align-items-center">
+
+  <h1 class="mb-4">プロフィール編集</h1>
+
+  <%= render "shared/error_messages", object: @user %>
+
+  <%= form_with model: @user, url: profile_path, method: :patch do |form| %>
+
+    <div class="mb-3">
+      <div class="mb-3">
+        <%= form.label :name, "ユーザー名", class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :bio, "自己紹介", class: "form-label" %>
+        <%= form.text_area :bio, rows: 5, class: "form-control", data: { ai_post_target: "body" } %>
+      </div>
+
+      <div class="mb-5">
+        <button type="button"
+                data-action="click->ai-post#improve"
+                data-ai-post-target="button">
+          <%= t('.ai_improve') %>
+        </button>
+
+        <span data-ai-post-target="status"></span>
+      </div>
+
+      <div class="mb-5">
+        <%= form.label :avatar, "プロフィール画像", class: "form-label" %>
+        <%= form.file_field :avatar, class: "form-control" %>
+      </div>
+
+
+      <%= form.submit "更新する", class: "btn btn-primary w-100" %>
+    </div>
+
+  <% end %>
+
+</div>

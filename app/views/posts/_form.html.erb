@@ -1,0 +1,46 @@
+<div data-controller="ai-post" class="mb-3 w-100 mx-auto" style="max-width: 600px;">
+
+  <%= render "shared/error_messages", object: @post %>
+
+  <%= form_with model: post do |f| %>
+
+    <div class="mb-3">
+      <%= f.label :image, "画像", class: "form-label" %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :title, class: "form-label" %>
+      <%= f.text_field :title,
+                       required: true,
+                       placeholder: t('.title_placeholder'),
+                       class: "form-control" %>
+    </div>
+
+    <div class="mb-3">
+      <%= f.label :body, class: "form-label" %>
+      <%= f.text_area :body,
+                      rows: 10,
+                      required: true,
+                      placeholder: t('.body_placeholder'),
+                      class: "form-control",
+                      data: { ai_post_target: "body" } %>
+    </div>
+
+    <div class="mb-3">
+      <button type="button"
+              data-action="click->ai-post#improve"
+              data-ai-post-target="button">
+        <%= t('.ai_improve') %>
+      </button>
+
+      <span data-ai-post-target="status"></span>
+    </div>
+
+    <div class="mb-3 text-center">
+      <%= f.submit class: "btn btn-primary w-100" %>
+    </div>
+
+  <% end %>
+
+</div>

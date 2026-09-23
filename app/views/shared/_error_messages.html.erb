@@ -1,0 +1,15 @@
+<% if object.errors.any? %>
+  <div class="alert alert-danger">
+    <ul class="mb-0 list-unstyled">
+      <% object.errors.each do |error| %>
+        <li>
+          <% if error.attribute == :password_confirmation && error.type == :confirmation %>
+            <%= error.message %>
+          <% else %>
+            <%= error.full_message %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,17 @@
+<% content_for :title, t('.title') %>
+
+<div class="container py-5">
+  <div class="mx-auto" style="max-width: 600px;">
+
+    <h1 class="text-center fw-bold mb-4">
+      <%= t('.title') %>
+    </h1>
+
+    <%= render "form", post: @post %>
+
+    <p class="text-center">
+      <%= link_to t('.back_to_show'), post_path(@post) %>
+    </p>
+
+  </div>
+</div>

@@ -1,0 +1,18 @@
+
+
+<%# 三項演算子で条件分岐 %>
+
+
+  <% profile_link = post.user == current_user ? profile_path : user_path(post.user) %>
+
+  <%= link_to profile_link, class: "text-decoration-none text-dark" do %>
+    <div class="d-flex align-items-center mb-2">
+      <% if post.user.avatar.attached? %>
+        <%= image_tag post.user.avatar,
+            width: 30,
+            height: 30,
+            class: "rounded-circle me-2" %>
+      <% end %>
+      <%= t('defaults.poster') %>：<%= post.user.name %>
+    </div>
+  <% end %>
