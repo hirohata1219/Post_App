@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-
   has_secure_password
   has_one_attached :avatar
 
@@ -16,5 +15,4 @@ class User < ApplicationRecord
   generates_token_for :password_reset, expires_in: 1.hour do
     password_digest
   end
-
 end

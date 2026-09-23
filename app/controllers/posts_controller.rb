@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   skip_before_action :require_login, only: %i[index show]
   before_action :set_post, only: %i[edit update destroy]
 
@@ -19,9 +18,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      redirect_to @post, success: t('defaults.flash_message.created', item: Post.model_name.human)
+      redirect_to @post, success: t("defaults.flash_message.created", item: Post.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_created', item: Post.model_name.human)
+      flash.now[:danger] = t("defaults.flash_message.not_created", item: Post.model_name.human)
       render :new, status: :unprocessable_entity
     end
   end
@@ -38,9 +37,9 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, success: t('defaults.flash_message.updated', item: Post.model_name.human)
+      redirect_to @post, success: t("defaults.flash_message.updated", item: Post.model_name.human)
     else
-      flash.now[:danger] = t('defaults.flash_message.not_updated', item: Post.model_name.human)
+      flash.now[:danger] = t("defaults.flash_message.not_updated", item: Post.model_name.human)
       render :edit, status: :unprocessable_entity
     end
   end
@@ -49,17 +48,16 @@ class PostsController < ApplicationController
     @post.destroy
 
     redirect_to posts_path, status: :see_other,
-          success: t('defaults.flash_message.deleted', item: Post.model_name.human)
+          success: t("defaults.flash_message.deleted", item: Post.model_name.human)
   end
 
   private
 
   def post_params
-    params.expect(post: [:title, :body, :image])
+    params.expect(post: [ :title, :body, :image ])
   end
 
   def set_post
     @post = current_user.posts.find(params[:id])
   end
-
 end

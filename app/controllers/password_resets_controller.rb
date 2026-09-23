@@ -1,7 +1,6 @@
 class PasswordResetsController < ApplicationController
-
   skip_before_action :require_login
-  
+
   def new
   end
 
@@ -43,7 +42,6 @@ class PasswordResetsController < ApplicationController
   private
 
   def password_params
-    params.expect(user: [:password, :password_confirmation])
+    params.expect(user: [ :password, :password_confirmation ])
   end
-
 end

@@ -1,5 +1,4 @@
 class ProfilesController < ApplicationController
-
   def show
     @user = current_user
     @post = @user.posts.order(created_at: :desc)
@@ -22,6 +21,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.expect(user: [:name, :bio, :avatar])
+    params.expect(user: [ :name, :bio, :avatar ])
   end
 end

@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-
   skip_before_action :require_login, only: %i[new create]
 
   def new
@@ -10,16 +9,15 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      redirect_to root_path, success: t('.success')
+      redirect_to root_path, success: t(".success")
     else
-      flash.now[:danger] = t('.failure')
+      flash.now[:danger] = t(".failure")
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     logout
-    redirect_to login_path, status: :see_other, success: t('.success')
+    redirect_to login_path, status: :see_other, success: t(".success")
   end
-
 end

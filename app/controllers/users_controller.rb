@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   skip_before_action :require_login, only: %i[new create]
 
   def new
@@ -10,9 +9,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to login_path, success: t('.success')
+      redirect_to login_path, success: t(".success")
     else
-      flash.now[:danger] = t('.failure')
+      flash.now[:danger] = t(".failure")
       render :new, status: :unprocessable_entity
     end
   end
@@ -24,7 +23,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.expect(user: [:name, :email, :password, :password_confirmation, :avatar])
+    params.expect(user: [ :name, :email, :password, :password_confirmation, :avatar ])
   end
-
 end

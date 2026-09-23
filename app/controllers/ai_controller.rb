@@ -1,5 +1,4 @@
 class AiController < ApplicationController
-
   def improve_post
     text = params[:text]
 
@@ -22,5 +21,4 @@ class AiController < ApplicationController
       error: "文章の改善に失敗しました。時間をおいて再度お試しください。"
     }, status: :service_unavailable
   end
-  
 end

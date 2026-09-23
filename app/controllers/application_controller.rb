@@ -25,7 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to login_path, notice: t('defaults.require_login') unless logged_in?
+    redirect_to login_path, notice: t("defaults.require_login") unless logged_in?
   end
-
 end

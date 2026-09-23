@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root "posts#index"
 
   resources :users, only: %i[new create show]
@@ -24,5 +23,4 @@ Rails.application.routes.draw do
   post "password_reset", to: "password_resets#create", as: :password_reset
   get "password_reset/edit", to: "password_resets#edit", as: :edit_password_reset
   patch "password_reset", to: "password_resets#update"
-
 end
