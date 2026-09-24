@@ -8,6 +8,7 @@ RUN apt-get update -qq && \
       libyaml-dev \
       pkg-config \
       curl \
+      libvips \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
