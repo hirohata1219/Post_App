@@ -13,10 +13,10 @@
 
         <% if @post.image.attached? %>
           <%= image_tag @post.image,
-              class: "img-fluid rounded object-fit-contain mb-5 mx-auto d-block" %>
+              class: "img-fluid rounded object-fit-contain mb-5 mx-auto d-block mt-5" %>
         <% end %>
 
-        <div class="mb-5">
+        <div class="mb-3">
           <%= simple_format(@post.body) %>
         </div>
 
@@ -25,7 +25,7 @@
           <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
         </p>
 
-        <div class="d-flex gap-2">
+        <div class="d-flex gap-2 mt-4">
           <% if @post.user == current_user %>
 
             <%= link_to t('defaults.edit'),
