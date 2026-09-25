@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get "/up", to: proc { [200, {}, ["OK"]] }
+  get "/up", to: "rails/health#show", as: :rails_health_check
 
   root "posts#index"
 
