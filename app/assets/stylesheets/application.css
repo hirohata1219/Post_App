@@ -12,6 +12,9 @@
   gap: 0.75rem;
 }
 
-.xx {
-  margin-right: 120px;
+
+@media screen and (max-width: 990px) {
+  .width {
+    width: 100%;
+  }
 }

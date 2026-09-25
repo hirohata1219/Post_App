@@ -4,10 +4,6 @@
 
   <%= form_with model: post do |f| %>
 
-    <div class="mb-3">
-      <%= f.label :image, "画像", class: "form-label" %>
-      <%= f.file_field :image, class: "form-control" %>
-    </div>
 
     <div class="mb-3">
       <%= f.label :title, class: "form-label" %>
@@ -27,7 +23,7 @@
                       data: { ai_post_target: "body" } %>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-4">
       <button type="button"
               data-action="click->ai-post#improve"
               data-ai-post-target="button">
@@ -37,7 +33,12 @@
       <span data-ai-post-target="status"></span>
     </div>
 
-    <div class="mb-3 text-center">
+    <div class="mb-5">
+      <%= f.label :image, "画像", class: "form-label" %>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+
+    <div class="mb-5 text-center">
       <%= f.submit class: "btn btn-primary w-100" %>
     </div>
 
