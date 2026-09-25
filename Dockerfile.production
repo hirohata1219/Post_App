@@ -31,4 +31,5 @@ RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"]
+CMD ["sh", "-c", "bundle exec rails db:migrate && bundle exec rails db:schema:load:cache && bundle exec rails db:schema:load:queue && bundle exec rails db:schema:load:cable && bundle exec rails server -b 0.0.0.0 -p ${PORT:-3000}"]
+
