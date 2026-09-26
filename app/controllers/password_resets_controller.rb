@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     if user
-      PasswordResetMailer.with(user: user).reset.deliver_now
+      PasswordResetMailer.with(user: user).reset.deliver_later
     end
 
     redirect_to login_path, success: "パスワード再設定の案内をメールアドレス宛に送信しました。"
