@@ -1,1 +1,7 @@
-Resend.api_key = ENV.fetch("RESEND_API_KEY")
+api_key = ENV["RESEND_API_KEY"]
+
+Rails.logger.info(
+  "RESEND_API_KEY present: #{api_key.present?}"
+)
+
+Resend.api_key = api_key
