@@ -58,24 +58,12 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
-  # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = {
     host: ENV.fetch("APP_HOST", "post-app-oaho.onrender.com"),
     protocol: "https"
   }
-  # Send email via SMTP
-  config.action_mailer.delivery_method = :smtp
 
-  config.action_mailer.smtp_settings = {
-    address: ENV.fetch("SMTP_ADDRESS", "smtp.resend.com"),
-    port: ENV.fetch("SMTP_PORT", "465").to_i,
-    domain: ENV.fetch("SMTP_DOMAIN", "resend.dev"),
-    user_name: ENV.fetch("SMTP_USERNAME", "resend"),
-    password: ENV.fetch("SMTP_PASSWORD", ""),
-    authentication: :plain,
-    enable_starttls_auto: false,
-    ssl: true
-    }
+  config.action_mailer.delivery_method = :resend
 
   config.action_mailer.raise_delivery_errors = true
 
