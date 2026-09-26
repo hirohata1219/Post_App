@@ -1,7 +1,0 @@
-api_key = ENV["RESEND_API_KEY"]
-
-Rails.logger.warn "===== RESEND CHECK ====="
-Rails.logger.warn "RESEND_API_KEY present: #{api_key.present?}"
-Rails.logger.warn "========================"
-
-Resend.api_key = api_key
