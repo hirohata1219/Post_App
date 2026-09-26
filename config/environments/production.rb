@@ -60,7 +60,7 @@ Rails.application.configure do
 
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = {
-    host: ENV.fetch("APP_HOST", "https://post-app-oaho.onrender.com"),
+    host: ENV.fetch("APP_HOST", "post-app-oaho.onrender.com"),
     protocol: "https"
   }
   # Send email via SMTP
