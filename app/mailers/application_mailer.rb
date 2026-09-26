@@ -2,7 +2,13 @@
 #   default from: "from@example.com"
 #   layout "mailer"
 # end
+
+# class ApplicationMailer < ActionMailer::Base
+#   default from: "noreply@postapp.com"
+#   layout "mailer"
+# end
+
 class ApplicationMailer < ActionMailer::Base
-  default from: "noreply@postapp.com"
+  default from: "onboarding@resend.dev"
   layout "mailer"
 end
