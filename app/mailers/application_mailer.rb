@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "postifyapp.online"
+  default from: "noreply@postifyapp.online"
   layout "mailer"
 end
