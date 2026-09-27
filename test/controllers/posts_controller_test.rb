@@ -30,5 +30,4 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     get edit_post_url(posts(:one))
     assert_response :success
   end
-
 end
