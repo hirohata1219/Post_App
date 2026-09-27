@@ -25,6 +25,12 @@ development:
     database: a_development_cable
     migrations_paths: db/cable_migrate
 
+test:
+  primary:
+    <<: *default
+    host: <%= ENV.fetch("DATABASE_HOST", "db") %>
+    database: a_test
+
 production:
   primary: &primary_production
     <<: *default

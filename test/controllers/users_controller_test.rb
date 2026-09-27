@@ -14,7 +14,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to login_path
-    assert_equal "新規登録に成功しました", flash[:notice]
+    assert_equal "ユーザー登録が完了しました", flash[:success]
   end
 
   test "render new when user creation fails" do
@@ -30,6 +30,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_response :unprocessable_entity
-    assert_equal "新規登録に失敗しました", flash[:alert]
+    assert_equal "ユーザー登録に失敗しました", flash[:danger]
   end
 end

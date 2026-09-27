@@ -2,22 +2,33 @@ require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get posts_index_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get posts_new_url
+    get posts_url
     assert_response :success
   end
 
   test "should get show" do
-    get posts_show_url
+    get post_url(posts(:one))
+    assert_response :success
+  end
+
+  test "should get new" do
+    post login_url, params: {
+      email: "taro@example.com",
+      password: "password"
+    }
+
+    get new_post_url
     assert_response :success
   end
 
   test "should get edit" do
-    get posts_edit_url
+    post login_url, params: {
+      email: "taro@example.com",
+      password: "password"
+    }
+
+    get edit_post_url(posts(:one))
     assert_response :success
   end
+
 end
