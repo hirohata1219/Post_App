@@ -7,9 +7,26 @@ RUN apt-get update -qq && \
       libpq-dev \
       git \
       curl \
+      wget \
+      gnupg \
+      ca-certificates \
       libyaml-dev \
       pkg-config \
+      libglib2.0-0 \
+      libnspr4 \
+      libnss3 \
+      libxcb1 \
+      libdbus-1-3 \
     && rm -rf /var/lib/apt/lists/*
+
+# Google Chromeをインストール
+RUN wget -q -O /tmp/google-chrome.deb \
+      https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      /tmp/google-chrome.deb && \
+    rm -f /tmp/google-chrome.deb && \
+    rm -rf /var/lib/apt/lists/*
 
 # ホスト側ユーザーと同じUID/GIDのユーザーを作成
 ARG UID=1000
