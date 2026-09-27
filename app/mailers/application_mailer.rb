@@ -1,14 +1,4 @@
-# class ApplicationMailer < ActionMailer::Base
-#   default from: "from@example.com"
-#   layout "mailer"
-# end
-
-# class ApplicationMailer < ActionMailer::Base
-#   default from: "noreply@postapp.com"
-#   layout "mailer"
-# end
-
 class ApplicationMailer < ActionMailer::Base
-  default from: "onboarding@resend.dev"
+  default from: "postifyapp.online"
   layout "mailer"
 end
