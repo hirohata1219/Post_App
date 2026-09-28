@@ -1,0 +1,31 @@
+<div class="py-5 col-md-5 mx-auto">
+
+  <h1 class="text-center fw-bold mb-5">
+    投稿詳細
+  </h1>
+
+  <p>
+    <strong>タイトル：</strong>
+    <%= @post.title %>
+  </p>
+
+  <p>
+    <strong>内容：</strong>
+    <%= @post.body %>
+  </p>
+
+  <p>
+    <strong>ユーザー：</strong>
+    <%= @post.user.name %>
+  </p>
+
+  <div class="py-4">
+    <%= link_to "編集", edit_admin_post_path(@post), class: "btn btn-warning btn-sm" %>
+    <%= button_to "削除", admin_post_path(@post), method: :delete, data: { turbo_confirm: "本当に削除しますか？" },
+               class: "btn btn-danger btn-sm" %>
+  </div>
+  <div class="text-center">
+    <%= link_to "投稿一覧に戻る", admin_posts_path %>
+  </div>
+
+</div>

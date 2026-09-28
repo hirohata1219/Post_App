@@ -1,0 +1,29 @@
+<div class="py-5 col-md-5 mx-auto">
+
+  <h1 class="text-center fw-bold mb-5">
+    投稿編集
+  </h1>
+
+  <%= form_with model: [:admin, @post] do |form| %>
+
+    <div class="mb-3">
+      <%= form.label :title, "タイトル", class: "form-label" %>
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+
+    <div class="mb-5">
+      <%= form.label :body, "内容", class: "form-label" %>
+      <%= form.text_area :body, class: "form-control" %>
+    </div>
+
+    <div class="mb-5">
+      <%= form.submit "更新する", class: "btn btn-primary btn-sm w-100" %>
+    </div>
+
+  <% end %>
+  
+  <div class="text-center">
+    <%= link_to "投稿詳細に戻る", admin_post_path(@post) %>
+  </div>
+
+</div>

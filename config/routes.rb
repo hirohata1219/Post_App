@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get "posts/index"
+    get "posts/show"
+    get "posts/edit"
+    get "users/index"
+    get "users/show"
+    get "users/edit"
+    get "dashboard/index"
+  end
   get "/up", to: "rails/health#show", as: :rails_health_check
 
   root "posts#index"
@@ -25,4 +34,12 @@ Rails.application.routes.draw do
   post "password_reset", to: "password_resets#create", as: :password_reset
   get "password_reset/edit", to: "password_resets#edit", as: :edit_password_reset
   patch "password_reset", to: "password_resets#update"
+
+  namespace :admin do
+    root "dashboard#index"
+
+    resources :users
+    resources :posts
+    resources :comments
+  end
 end

@@ -1,0 +1,31 @@
+<div class="py-5 col-md-8 mx-auto">
+
+  <h1 class="text-center fw-bold mb-5">
+    投稿管理
+  </h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>タイトル</th>
+        <th>ユーザー</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.id %></td>
+          <td><%= post.title %></td>
+          <td><%= post.user.name %></td>
+          <td>
+            <%= link_to "詳細", admin_post_path(post), class: "btn btn-primary btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
