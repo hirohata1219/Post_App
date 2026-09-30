@@ -48,11 +48,7 @@
       <% end %>
 
       <div class="d-flex justify-content-center mt-5 mb-3">
-        <%= paginate @posts, 
-            first_page_text: false,
-            last_page_text: false,
-            previous_page_text: false,
-            next_page_text: false %>
+        <%= paginate @posts %>
       </div>
 
     <% else %>
