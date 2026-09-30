@@ -4,7 +4,7 @@
   <div class="mx-auto" style="max-width: 800px;">
 
     <h1 class="py-4 text-center"><%= t('.title') %></h1>
-<%= Pagy::VERSION %>
+
     <%= form_with url: search_posts_path, method: :get, local: true, class: "d-flex width mb-5" do |f| %>
       <%= f.search_field :q, value: params[:q], class: "form-control me-2", placeholder: "投稿を検索" %>
       <%= f.submit "検索", class: "btn btn-outline-primary me-2" %>
@@ -48,7 +48,11 @@
       <% end %>
 
       <div class="d-flex justify-content-center mt-5 mb-3">
-        <%= paginate @posts %>
+        <%= paginate @posts, 
+            first_page_text: false,
+            last_page_text: false,
+            previous_page_text: false,
+            next_page_text: false %>
       </div>
 
     <% else %>
