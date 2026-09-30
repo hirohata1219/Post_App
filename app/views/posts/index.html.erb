@@ -16,9 +16,14 @@
         <article class="card mb-3 p-3">
           <div class="card-body">
 
-            <h2 class="mb-3">
-              <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
-            </h2>
+            <div class="d-flex justify-content-between">
+              <h2 class="mb-3">
+                <%= link_to post.title, post_path(post), class: "text-decoration-none" %>
+              </h2>
+              <div class="text-muted small">
+                <%= time_ago_in_words(post.created_at) %>
+              </div>
+            </div>
 
           <%# 三項演算子で条件分岐 %>
             <%= render 'posts/poster', post: post %>

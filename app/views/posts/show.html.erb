@@ -1,12 +1,19 @@
 <% content_for :title, @post.title %>
 
-<div class="container pt-5">
+<div class="container pt-3">
   <div class="mx-auto" style="max-width: 800px;">
 
-    <div class="card mb-5 p-3">
+    <div class="card mb-3 p-3">
       <div class="card-body">
 
-        <h1 class="mb-3"><%= @post.title %></h1>
+        <div class="d-flex justify-content-between">
+          <h2>
+            <%= link_to @post.title, post_path(@post), class: "text-decoration-none" %>
+          </h2>
+          <div class="text-muted small">
+            <%= @post.created_at.strftime("%Y/%m/%d") %>
+          </div>
+        </div>
 
         <%# 三項演算子で条件分岐 %>
             <%= render 'posts/poster', post: @post %>
@@ -16,14 +23,9 @@
               class: "img-fluid rounded object-fit-contain mb-5 mx-auto d-block mt-5" %>
         <% end %>
 
-        <div class="mb-3">
+        <div class="mb-4">
           <%= simple_format(@post.body) %>
         </div>
-
-        <p class="text-muted small">
-          <%= t('.created_at') %>:
-          <%= @post.created_at.strftime("%Y/%m/%d %H:%M") %>
-        </p>
 
         <div class="d-flex gap-2 mt-4">
           <% if @post.user == current_user %>
@@ -53,16 +55,16 @@
         <%= button_to t('.liked'),
                       post_like_path(@post),
                       method: :delete,
-                      class: "btn btn-danger" %>
+                      class: "btn btn-danger btn-sm" %>
       <% else %>
         <%= button_to t('.like'),
                       post_like_path(@post),
                       method: :post,
-                      class: "btn btn-outline-danger" %>
+                      class: "btn btn-outline-danger btn-sm" %>
       <% end %>
     </div>
 
-    <div class="mb-5">
+    <div class="mb-4 text-muted small">
       <span>
         <%= t('.like_count') %>：<%= @post.likes_count %>
       </span>
@@ -83,14 +85,13 @@
       </div>
 
       <div class="mb-3">
-        <%= f.submit t('.comment_submit'),
-                     class: "btn btn-primary w-100" %>
+        <%= f.submit class: "btn btn-primary w-100" %>
       </div>
 
     <% end %>
 
-    <p class="pt-4">
-      <%= t('.comments') %>（<%= @post.comments_count %>）
+    <p class="pt-4 small">
+      <%= t('.comment_count') %>（<%= @post.comments_count %>）
     </p>
 
     <% if @comments.any? %>
@@ -99,17 +100,18 @@
 
         <article class="border rounded p-3 mb-3">
 
-          <p class="fw-bold mb-2">
-            <%= comment.user.name %>
-          </p>
+          <div class="d-flex justify-content-between">
+            <p class="fw-bold mb-2">
+              <%= comment.user.name %>
+            </p>
+            <p class="text-muted">
+              <%= time_ago_in_words(@post.created_at) %>
+            </p>
+          </div>
 
           <div class="mb-2">
             <%= simple_format(comment.body) %>
           </div>
-
-          <small class="d-block text-muted mb-2">
-            <%= comment.created_at.strftime("%Y/%m/%d %H:%M") %>
-          </small>
 
           <% if comment.user == current_user %>
             <%= button_to t('defaults.delete'),
