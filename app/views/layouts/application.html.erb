@@ -28,6 +28,7 @@
   <body class="container">
     <% if logged_in? %>
       <%= render "shared/header" %>
+      <%= render "shared/fixed_bar" %>
     <% else %>
       <%= render "shared/before_login_header" %>
     <% end %>
